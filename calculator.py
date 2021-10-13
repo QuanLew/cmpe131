@@ -68,4 +68,3 @@ def parse_input():
 	operator = text[1]
 	return calculator(num1,num2,operator)
 
-

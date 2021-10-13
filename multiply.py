@@ -1,4 +1,4 @@
-def multiply_list():
+def multiply():
 
 	"""
 
@@ -36,5 +36,3 @@ def multiply_list():
 	print(f"Input = {myList}")
 	#print(f"Output = {result}")
 	return (f"Output = {result}")
-
-
