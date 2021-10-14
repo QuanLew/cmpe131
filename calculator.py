@@ -19,7 +19,7 @@ def calculator(number1, number2, operator):
 
 	result = 0
 	
-	if number1.isdigit() == True and number2.isdigit() == True:
+	if type(number1) == int or float and type(number2) == int or float:
 		num1 = float(number1)
 		num2 = float(number2)
 		if operator == '+':	
@@ -68,3 +68,4 @@ def parse_input():
 	operator = text[1]
 	return calculator(num1,num2,operator)
 
+print(parse_input())
