@@ -26,7 +26,6 @@ def multiply_list(list):
 		else:
 			print("Invalid value!!!")
 			return False
-	print(f"Input = {list}")
-	return (f"Output = {result}")
+	return result
 
-print(multiply_list([1,3,4,5]))
+print(multiply_list([1,2,3,4,5]))
