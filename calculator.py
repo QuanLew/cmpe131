@@ -1,3 +1,5 @@
+from __future__ import division
+
 def calculator(number1, number2, operator):
 
 	"""
@@ -20,20 +22,25 @@ def calculator(number1, number2, operator):
 	result = 0
 	
 	if type(number1) == int or float and type(number2) == int or float and operator in ('+','-','*','/','//','**'):
-		num1 = float(number1)
-		num2 = float(number2)
-		if operator == '+':	
-			result= num1 + num2	 
-		elif operator == '-':	
-			result= num1 - num2	 	
-		elif operator == '*':	
-			result= num1 * num2	 	
-		elif operator == '/':	
-			result= num1 / num2	 	
-		elif operator == '//':	
-			result= num1 // num2	 	
-		elif operator == '**':	
-			result= num1 ** num2
+		try:
+			num1 = float(number1)
+			num2 = float(number2)
+			if operator == '+':	
+				result= num1 + num2	 
+			elif operator == '-':	
+				result= num1 - num2	 	
+			elif operator == '*':	
+				result= num1 * num2	 	
+			elif operator == '/':	
+				result= num1 / num2	 	
+			elif operator == '//':	
+				result= num1 // num2	 	
+			elif operator == '**':	
+				result= num1 ** num2
+		except ZeroDivisionError:
+			print("Can not divide by Zero")
+			return False
+		
 		return result	 		
 	else:
 		print('Invalid value/operator!!!')
@@ -73,3 +80,4 @@ def parse_input():
 		exit() 	
 	return calculator(num1,num2,operator)
 
+print(parse_input())
