@@ -17,6 +17,12 @@
 	<a href = "https://www.google.com"> goooogle </a>
 	</br>
 	
+	<ul>
+            {% for user in name_cities %}
+                <li> {{user}} </li>
+            {% endfor %}	
+	</ul>
+
 	{% block content %}
 	{% endblock %}		
       </body>
