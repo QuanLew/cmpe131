@@ -9,23 +9,27 @@ def homepage():
 	title_cities = 'Top Cities'
 	greeting = "Quan"
 	form_city = TopCities()
-	model_city = Cities.query.all()
+	model_city = Cities.query.order_by(Cities.cityrank).all()
 
 	if form_city.validate_on_submit():
-		#name = Cities.query.filter_by(cityname = form_city.city_name.data).first()
-		name = form_city.city_name.data
-		rank = form_city.city_rank.data
+		name_prompt = Cities.query.filter_by(cityname=form_city.city_name.data).first()
+		rank_prompt = Cities.query.filter_by(cityrank=form_city.city_rank.data).first()
 
-		if name is None:
-			flash('Invalid input!!!')
+		if not name_prompt is None:
+			flash('Name of city is existence!!!')
 		else:
+			if rank_prompt is None:
+				rank = form_city.city_rank.data
+			else:
+				rank = Cities.query.count()+1
+			name = form_city.city_name.data
+			db.create_all()
+			c = Cities(name,rank)
+			db.session.add(c)
+			db.session.commit()
+
 			flash(f'{form_city.city_name.data} is added')
-			db.create_all()		
-			city = Cities(name,rank)
-			#city.set_name(name)
-			#city.set_rank(rank)
-			db.session.add(city)
-			db.session.commit()	
-		return redirect('/')
-	
+
+		return redirect('/')		
+
 	return render_template("home.html", title_pass = title_cities, XX = greeting, top_cities = form_city, name_cities = model_city)
